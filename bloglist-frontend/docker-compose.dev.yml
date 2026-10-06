@@ -1,0 +1,14 @@
+services:
+  app:
+    image: bloglist-frontend-dev
+    build:
+      context: .
+      dockerfile: dev.Dockerfile
+    volumes:
+      - ./:/usr/src/app
+      - /usr/src/app/node_modules
+    ports:
+      - 5173:5173
+    container_name: bloglist-frontend-dev
+    env_file:
+      - .env

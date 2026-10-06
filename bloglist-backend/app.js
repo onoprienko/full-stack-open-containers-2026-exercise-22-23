@@ -6,8 +6,10 @@ const usersRouter = require('./controllers/users');
 const loginRouter = require('./controllers/login');
 const config = require('./utils/config');
 const middleware = require('./utils/middleware');
+const cors = require('cors');
 
 const app = express();
+app.use(cors());
 
 dns.setServers(['1.1.1.1', '8.8.8.8']);
 mongoose.connect(config.MONGO_URI, { family: 4 });

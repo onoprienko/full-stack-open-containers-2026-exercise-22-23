@@ -1,5 +1,5 @@
 import axios from 'axios';
-const baseUrl = '/api/login';
+const baseUrl = `${import.meta.env.VITE_BACKEND_URL}/api/login`;
 
 const login = (loginData) => {
   const request = axios.post(baseUrl, loginData);
