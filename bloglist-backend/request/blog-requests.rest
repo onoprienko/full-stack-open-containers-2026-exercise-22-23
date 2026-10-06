@@ -1,0 +1,29 @@
+GET http://localhost:3003/api/blogs
+
+###
+POST http://localhost:3003/api/blogs
+Content-type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InJvb3QiLCJpZCI6IjY5ZjMzMzEzNWViZGI0NWI0ZjE5MTJmYyIsImlhdCI6MTc3NzcxODExMCwiZXhwIjoxNzc3ODA0NTEwfQ.OIAx5MKhkOKQBx9-7KAQGp0osAjkXrzS5Cr-MdBYZnI
+
+{
+  "title": "user-extractor3",
+  "author": "test",
+  "url": "test",
+  "likes": 1
+}
+
+###
+DELETE http://localhost:3003/api/blogs/69f5e69d22a3d5addbb354dc
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InJvb3QiLCJpZCI6IjY5ZjMzMzEzNWViZGI0NWI0ZjE5MTJmYyIsImlhdCI6MTc3NzcxODExMCwiZXhwIjoxNzc3ODA0NTEwfQ.OIAx5MKhkOKQBx9-7KAQGp0osAjkXrzS5Cr-MdBYZnI
+
+
+###
+PUT http://localhost:3003/api/blogs/69f1d96699025b17ca16bb43
+content-type: application/json
+
+{
+  "title": "test-updated",
+  "author": "test-updated",
+  "url": "test-updated",
+  "likes": 100
+}
