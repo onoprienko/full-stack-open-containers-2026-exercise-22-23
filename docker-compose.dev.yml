@@ -1,0 +1,39 @@
+services:
+  app:
+    image: bloglist-frontend-dev
+    volumes:
+      - ./bloglist-frontend:/usr/src/app
+      - /usr/src/app/node_modules
+    environment:
+      - VITE_BACKEND_URL=http://localhost:8080
+    depends_on:
+      - server
+
+  mongo:
+    image: mongo
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: root
+      MONGO_INITDB_ROOT_PASSWORD: example
+      MONGO_INITDB_DATABASE: the_database
+    volumes:
+      - ./bloglist-backend/mongo/mongo-init.js:/docker-entrypoint-initdb.d/mongo-init.js
+      - ./bloglist-backend/mongo_data:/data/db
+  server:
+    image: bloglist-backend-dev
+    volumes:
+      - ./bloglist-backend/:/usr/src/server
+      - /usr/src/server/node_modules
+    environment:
+      - DEV_MONGO_URI=mongodb://the_username:the_password@mongo:27017/the_database
+    depends_on:
+      - mongo
+
+  nginx:
+    image: nginx:1.29
+    volumes:
+      - ./nginx.dev.conf:/etc/nginx/nginx.conf:ro
+    ports:
+      - 8080:80
+    depends_on:
+      - app
+      - server
